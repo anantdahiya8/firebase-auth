@@ -1,0 +1,18 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Allow authenticated users to read any document in the `orders` collection.
+    // Production note: restrict writes and validate data shape/owner before allowing write.
+    match /orders/{orderId} {
+      allow read: if request.auth != null;
+      // Example write rule: only the authenticated user who owns the order may write it
+      // allow write: if request.auth != null && request.auth.uid == request.resource.data.userId;
+    }
+
+    // Fallback: deny all other access explicitly
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
