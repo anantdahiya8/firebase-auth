@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule, NgIf } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { getAuth } from 'firebase/auth';
 import { AuthService } from './shared/services/auth/auth.service';
 import { FireStoreService } from './shared/services/firestore/firestore.service';
 import { ButtonModule } from 'primeng/button';
