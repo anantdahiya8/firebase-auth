@@ -1,0 +1,18 @@
+/* Full-screen loader overlay */
+.loader-overlay {
+	position: fixed;
+	inset: 0; /* top:0; right:0; bottom:0; left:0 */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: rgba(0, 0, 0, 0.90); /* dim backdrop */
+	z-index: 10000; /* above app content */
+}
+
+/* Increase spinner size and ensure it contrasts with backdrop */
+.loader-overlay .loader {
+	--size: 64px; /* primeng spinner size via CSS variable if supported */
+	width: 64px;
+	height: 64px;
+}
+

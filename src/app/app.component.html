@@ -1,10 +1,90 @@
-Hello World!
-<button (click)="create()">Create account</button>
-<button (click)="signInGmail()">Sign In With Gmail</button>
-<button (click)="getOrders()">Get Orders</button>
-<button (click)="getSingleOrder()">Get Single Order</button>
-<button (click)="logout()">Logout</button>
-<button (click)="sendPasswordResetEmail()">Password Reset</button>
-<button (click)="signInWithEmail()">Sign In with Email</button>
+<div class="text-3xl font-bold m-5">
+    <h1>Firebase and PrimeNG Test App</h1>
+    <p>Test features in this app</p>
+</div>
 
-<h1>User logged in : {{user}}</h1>
+<h3 class="text-xl font-bold m-6">User logged in : {{user}}</h3>
+
+<div class="m-10">
+    <p-accordion value="0" [multiple]="true">
+        <p-accordion-panel value="0">
+            <p-accordion-header>Create account</p-accordion-header>
+            <p-accordion-content>
+                <div>
+                    <div class="card flex justify-center">
+                        <p-iftalabel>
+                            <input pInputText id="username" [(ngModel)]="createEmail" autocomplete="off" />
+                            <label for="username">Username</label>
+                        </p-iftalabel>
+                    </div>
+
+                    <div class="card flex justify-center m-5">
+                        <p-iftalabel>
+                            <input type="password" pInputText id="password" [(ngModel)]="createPassword" autocomplete="off" />
+                            <label for="password">Pasword</label>
+                        </p-iftalabel>
+                    </div>
+
+                    <div class="card flex justify-center">
+                        <p-button class="m-5" severity="danger" (click)="create()">Create account</p-button>
+                    </div>
+                </div>
+                
+            </p-accordion-content>
+        </p-accordion-panel>
+
+        <p-accordion-panel value="1">
+            <p-accordion-header>Login / Logout</p-accordion-header>
+            <p-accordion-content>
+                <div>
+                    <div class="card flex justify-center">
+                        <p-iftalabel>
+                            <input pInputText id="username" [(ngModel)]="loginEmail" autocomplete="off" />
+                            <label for="username">Username</label>
+                        </p-iftalabel>
+                    </div>
+
+                    <div class="card flex justify-center m-5">
+                        <p-iftalabel>
+                            <input type="password" pInputText id="password" [(ngModel)]="loginPassword" autocomplete="off" />
+                            <label for="password">Pasword</label>
+                        </p-iftalabel>
+                    </div>
+
+                    <div class="card flex justify-center">
+                        <p-button severity="success" (click)="signInWithEmail()">Sign In with Email</p-button>
+                        <p-button severity="warn" (click)="signInGmail()">Sign In With Gmail</p-button>
+                        <p-button severity="contrast" (click)="logout()">Logout</p-button>
+                        <p-button severity="secondary" (click)="sendPasswordResetEmail()">Password Reset</p-button>
+                    </div>
+                </div>
+            </p-accordion-content>
+        </p-accordion-panel>
+
+        <p-accordion-panel value="2">
+            <p-accordion-header>Fetch data for signed user (Firestore)</p-accordion-header>
+            <p-accordion-content>
+                <div>
+                    <div class="card flex justify-center">
+                        <p-button severity="info" (click)="getOrders()">Get Orders</p-button>
+                        <p-button severity="help" (click)="getSingleOrder()">Get Single Order</p-button>
+                    </div>
+                    <div class="card flex justify-center">
+                        <textarea rows="10" cols="60" pTextarea [(ngModel)]="orderResponse"></textarea>
+                    </div>
+                    
+                </div>
+            </p-accordion-content>
+        </p-accordion-panel>
+    </p-accordion>
+</div>
+
+
+
+
+<!-- Full-screen loader overlay: shown when the loader service signal is true -->
+<div *ngIf="loaderService.showLoader()" class="loader-overlay" role="status" aria-live="polite">
+  <p-progress-spinner styleClass="loader" ariaLabel="loading"></p-progress-spinner>
+</div>
+
+<p-toast />
