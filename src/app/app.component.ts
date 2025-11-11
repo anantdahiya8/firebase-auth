@@ -137,4 +137,5 @@ export class AppComponent {
       })
       .finally(() => this.loaderService.hide());
   }
+
 }

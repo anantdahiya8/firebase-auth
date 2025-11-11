@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { getFirestore, collection, query, getDocs, onSnapshot, doc, getDoc, DocumentData } from 'firebase/firestore';
+import { getFirestore, collection, query, onSnapshot, doc, getDoc, DocumentData, addDoc } from 'firebase/firestore';
 import { Observable, from } from 'rxjs';
 import { map } from 'rxjs/operators';
 
