@@ -16,3 +16,12 @@
 	height: 64px;
 }
 
+/* Hover zoom effect for images */
+.image-zoom {
+	transition: transform 0.3s ease-in-out;
+}
+
+.image-zoom:hover {
+	transform: scale(1.1);
+}
+

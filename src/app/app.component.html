@@ -5,7 +5,7 @@
 
 <h3 class="text-xl font-bold m-6">User logged in : {{user}}</h3>
 
-<div class="m-10">
+<div class="m-0 md:m-10">
     <p-accordion value="0" [multiple]="true">
         <p-accordion-panel value="0">
             <p-accordion-header>Create account</p-accordion-header>
@@ -73,6 +73,40 @@
                         <textarea rows="10" cols="60" pTextarea [(ngModel)]="orderResponse"></textarea>
                     </div>
                     
+                </div>
+            </p-accordion-content>
+        </p-accordion-panel>
+
+
+        <p-accordion-panel value="3">
+            <p-accordion-header>Flexbox using tailwind</p-accordion-header>
+            <p-accordion-content>
+                <div class="flex flex-wrap justify-evenly">
+                    <div class="bg-red-200 h-100 w-70 rounded m-4">
+
+                        <div class="flex justify-center">
+                            <div class="bg-amber-700 h-40 w-full rounded">
+
+                            </div>
+                        </div>
+                        <div class="flex justify-between">
+                            <div class="bg-yellow-200 rounded m-4">
+                                1-bedroom
+                            </div>
+
+                            <div class="bg-green-200 rounded m-4">
+                                2000 $
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="bg-yellow-200 h-100 w-70 rounded m-4">
+                        
+                    </div>
+
+                    <div class="bg-green-200 h-100 w-70 rounded m-4">
+                        
+                    </div>
                 </div>
             </p-accordion-content>
         </p-accordion-panel>
