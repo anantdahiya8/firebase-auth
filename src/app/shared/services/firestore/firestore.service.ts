@@ -48,4 +48,32 @@ export class FireStoreService {
       map(snapshot => snapshot.exists() ? ({ id: snapshot.id, ...snapshot.data() } as DocumentData) : null)
     );
   }
+
+  /**
+   * Sends an email using Firebase Firestore Email Extension.
+   * Adds a document to the 'mail' collection which triggers the email extension.
+   * 
+   * @param to - Recipient email address
+   * @param subject - Email subject line
+   * @param html - Email body in HTML format
+   * @returns Promise that resolves when email document is added to Firestore
+   * 
+   * Note: Requires Firebase Email Extension to be installed in your Firebase project.
+   * Install from: Firebase Console → Extensions → Search "Trigger Email from Firestore"
+   */
+  sendEmail(to: string[], subject: string, html: string): Promise<DocumentData> {
+    const mailCollectionRef = collection(this.db, 'mail');
+    
+    return addDoc(mailCollectionRef, {
+      bcc: to,
+      message: {
+        subject: subject,
+        html: html,
+      },
+    }).then((docRef) => {
+      return docRef;
+    }).catch((error) => {
+      throw error;
+    });
+  }
 }

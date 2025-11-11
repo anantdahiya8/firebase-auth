@@ -37,6 +37,9 @@ export class AppComponent {
   loginEmail: string = '';
   loginPassword: string = '';
   orderResponse: string = '';
+  emailSend: string = '';
+  emailSubject: string = '';
+  emailBody: string = '';
 
   get user(): string | null {
     return this.authService.userName();
@@ -136,6 +139,18 @@ export class AppComponent {
         this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Email sign-in failed', life: 3000 });
       })
       .finally(() => this.loaderService.hide());
+  }
+
+  sendEmail(){
+    this.loaderService.show();
+    this.fireService.sendEmail([this.emailSend], this.emailSubject, this.emailBody)
+      .then(() => {
+        this.messageService.add({ severity: 'success', summary: 'Email Queued', detail: 'Email has been queued for sending', life: 3000 });
+      })
+      .catch(() => {
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Failed to queue email', life: 3000 });
+      })
+      .finally(() => this.loaderService.hide()); 
   }
 
 }

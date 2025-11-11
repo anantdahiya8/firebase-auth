@@ -6,7 +6,7 @@
 <h3 class="text-xl font-bold m-6">User logged in : {{user}}</h3>
 
 <div class="m-0 md:m-10">
-    <p-accordion value="0" [multiple]="true">
+    <p-accordion [multiple]="true">
         <p-accordion-panel value="0">
             <p-accordion-header>Create account</p-accordion-header>
             <p-accordion-content>
@@ -117,6 +117,38 @@
                         
                     </div>
                 </div>
+            </p-accordion-content>
+        </p-accordion-panel>
+
+
+        <p-accordion-panel value="4">
+            <p-accordion-header>Send Email</p-accordion-header>
+            <p-accordion-content>
+
+                <div class="card">
+                    <div class="flex justify-center">
+                        <p-iftalabel>
+                            <input pInputText id="email" [(ngModel)]="emailSend" autocomplete="off" />
+                            <label for="email">Email</label>
+                        </p-iftalabel>
+
+                    </div>
+
+                    <div class="flex justify-center m-4">
+                        <p-iftalabel>
+                            <input pInputText id="subject" [(ngModel)]="emailSubject" autocomplete="off" />
+                            <label for="subject">Subject</label>
+                        </p-iftalabel>
+
+                    </div>
+                    <div class="flex justify-center m-4">
+                        <textarea rows="10" cols="60" pTextarea [(ngModel)]="emailBody"></textarea>
+                    </div>
+                    <div class="flex justify-center">
+                        <p-button severity="help" (click)="sendEmail()">Send Email</p-button> 
+                    </div>
+                </div>
+                       
             </p-accordion-content>
         </p-accordion-panel>
     </p-accordion>
